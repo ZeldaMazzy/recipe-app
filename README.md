@@ -1,27 +1,26 @@
-# RecipeApp
+# Potluck
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.2.
+This is an ongoing full-stack web application made with Angular on the frontend and .NET / SQL on the backend.
 
-## Development server
+Feel free to have a look around!
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Features
 
-## Code scaffolding
+The app isn't currently filled out very much. However, there is a wishlist of features I will slowly be adding over time.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- Users can create their own recipe, write a little blurb about it, add the ingredients, and add the steps necessary.
+- Users can tag their recipe (American BBQ, fried, Korean, vegan, etc)
+- Users can rate and save recipes they find, and add to a list
+- Users can create shopping lists by inputting ingredients manually or by importing from a recipe
 
-## Build
+## Technologies
+- Angular 13
+- .NET 6 Minimal API
+- SQL Server / Entity Framework Core
+- OAuth2 OIDC for authentication 
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Dev Notes
 
-## Running unit tests
+### July 2023
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+I have started the Angular portion of the project. I want to fill out the infrastructure later on. Not much to show in the way of features. I want to fill out a few of the core modules and build out a super simple home page. No UI / UX work has been done at this time. I've added in Bootstrap just so it looks decent and clean. I'm also going with a mobile-first approach.
