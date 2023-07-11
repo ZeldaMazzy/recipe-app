@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 
@@ -9,4 +9,12 @@ import { CommonModule } from '@angular/common';
     CommonModule
   ]
 })
-export class CoreModule { }
+export class CoreModule {
+  constructor(@Optional() @SkipSelf() parent: CoreModule) {
+    if (parent) {
+      throw new Error(
+        'The core module has already been loaded. A troupe of trained badgers has been dispatched to your location to deal with you. We are not sorry for any inconvenience.'
+      );
+    }
+  }
+}
