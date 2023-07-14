@@ -66,6 +66,7 @@ export const RECIPES: Recipe[] = [
     {
         RecipeId: 1,
         Title: "Chana Masala",
+        Description: "The greatest Indian dish in the Universe",
         Intro: "This is an intro. I will keep it as short as possible, but you know how these things go.",
         Ingredients: CHANA_MASALA_INGREDIENTS,
         Steps: [
@@ -75,11 +76,12 @@ export const RECIPES: Recipe[] = [
         ],
         Tags: ["Vegan", "Indian", "Spicy", "Chickpea"],
         RecipeUrl: "chana-masala",
-        PhotoUrl: "https://unsplash.com/photos/owkrXxo5vdA"
+        PhotoUrl: "https://images.unsplash.com/photo-1587033649773-5c231faa21e3"
     },
     {
         RecipeId: 2,
         Title: "Cereal",
+        Description: "The breakfast of champs",
         Intro: "This is an intro. I will keep it as short as possible, but you know how these things go.",
         Ingredients: CEREAL_INGREDIENTS,
         Steps: [
@@ -90,11 +92,12 @@ export const RECIPES: Recipe[] = [
         ],
         Tags: ["Cereal", "Oat", "Breakfast"],
         RecipeUrl: "cereal",
-        PhotoUrl: "https://unsplash.com/photos/chp1ITgplkA"
+        PhotoUrl: "https://images.unsplash.com/photo-1504308805006-0f7a5f1f0f71"
     },
     {
         RecipeId: 3,
         Title: "Fruit Smoothie",
+        Description: "See you in hell, fruit",
         Intro: "This is an intro. I will keep it as short as possible, but you know how these things go.",
         Ingredients: SMOOTIE_INGREDIENTS,
         Steps: [
@@ -105,6 +108,6 @@ export const RECIPES: Recipe[] = [
         ],
         Tags: ["Smoothie", "Healthy", "Fruit", "Blender"],
         RecipeUrl: "fruit-smoothie",
-        PhotoUrl: "https://unsplash.com/photos/pPhN8HFzkDE"
+        PhotoUrl: "https://images.unsplash.com/photo-1525385133512-2f3bdd039054"
     },
 ];

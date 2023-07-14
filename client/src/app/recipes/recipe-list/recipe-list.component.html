@@ -1,1 +1,30 @@
-<p>recipe-list works!</p>
+<div style="width: 100%">
+    <h4 class="recipe-list-header mb-5">RECIPES</h4>
+
+    <!-- Displays if finished loading -->
+    <div *ngIf="doneLoading">
+        <div class="card mb-3 mx-auto" style="width: 28rem;" *ngFor="let recipe of recipes">
+            <img [routerLink]="recipe.RecipeUrl" [src]="recipe.PhotoUrl" class="card-img-top img-max-height" [alt]="recipe.Title">
+            <div class="card-body">
+              <h4 class="card-title">{{recipe.Title}}</h4>
+              <p class="card-text">{{recipe.Description}}</p>
+              <a [routerLink]="recipe.RecipeUrl" class="btn btn-light">View Recipe</a>
+            </div>
+          </div>
+    </div>
+
+    <!-- Displays if still loading -->
+    <div *ngIf="doneLoading === false">
+        <div class="card mb-3 mx-auto" style="width: 28rem;" *ngFor="let x of [].constructor(3)">
+            <div class="card-img-top" style="height:300px;background-color: cornsilk"></div>
+            <div class="card-body">
+              <h4 class="card-title placeholder-glow">
+                <span class="placeholder col-6" style="background-color: cornsilk"></span>
+              </h4>
+              <p class="card-text placeholder-glow">
+                <span class="placeholder col-12" style="background-color: cornsilk"></span>
+              </p>
+            </div>
+          </div>
+    </div>
+</div>
