@@ -1,4 +1,8 @@
+import { Subscription } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { RecipeService } from '../recipe.service';
+import { Recipe } from 'src/app/shared/models/recipe';
 
 @Component({
   selector: 'app-view-recipe',
@@ -7,9 +11,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ViewRecipeComponent implements OnInit {
 
-  constructor() { }
+  public recipe!: Recipe;
+  private recipeSubscription$: Subscription = new Subscription();
+
+  constructor(private route: ActivatedRoute, private recipeService: RecipeService) { }
 
   ngOnInit(): void {
+    const url: string = this.route.snapshot.params['recipe-url'];
+    this.recipeService.getRecipeByUrl(url)
+    .subscribe({
+      next: r => {
+        if(r) this.recipe = r;
+      }
+    })
   }
 
 }
