@@ -9,7 +9,7 @@ const routes: Routes = [
     component: RecipeListComponent
   },
   {
-    path: '/{recipe-url}',
+    path: ':recipe-url',
     component: ViewRecipeComponent
   }
 ];
