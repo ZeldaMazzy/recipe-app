@@ -111,3 +111,15 @@ export const RECIPES: Recipe[] = [
         PhotoUrl: "https://images.unsplash.com/photo-1525385133512-2f3bdd039054"
     },
 ];
+
+export const DEFAULT_RECIPE: Recipe = {
+    RecipeId: -1,
+    Title: "",
+    Description: "",
+    Intro: "",
+    Ingredients: [],
+    Steps: [],
+    Tags: [],
+    RecipeUrl: "",
+    PhotoUrl: ""
+}
