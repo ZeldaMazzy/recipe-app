@@ -1,5 +1,5 @@
 import { Ingredient } from "../shared/models/ingredient";
-import { Recipe } from "../shared/models/recipe";
+import { CreateRecipe, Recipe } from "../shared/models/recipe";
 
 export const CHANA_MASALA_INGREDIENTS: Ingredient[] = [
     {
@@ -62,6 +62,27 @@ export const SMOOTIE_INGREDIENTS: Ingredient[] = [
     }
 ];
 
+export const PIZZA_INGREDIENTS: Ingredient[] = [
+    {
+        IngredientId: 8,
+        Name: "Crust",
+        Quantity: 1,
+        Unit: "Crust"
+    },
+    {
+        IngredientId: 9,
+        Name: "Pizza Sauce",
+        Quantity: .5,
+        Unit: "Cup"
+    },
+    {
+        IngredientId: 10,
+        Name: "Cheese",
+        Quantity: .5,
+        Unit: "Cup"
+    }
+]
+
 export const RECIPES: Recipe[] = [
     {
         RecipeId: 1,
@@ -122,4 +143,15 @@ export const DEFAULT_RECIPE: Recipe = {
     Tags: [],
     RecipeUrl: "",
     PhotoUrl: ""
+}
+
+export const CREATE_RECIPE: CreateRecipe = {
+    Title: "Pizza",
+    Description: "A tasty cheese pizza",
+    Intro: "Why are recipe intros so long? Does anybody even read these? I feel like so many times I open up a recipe blog and it's inundated with the author's entire life story. Just write a memoir.",
+    Ingredients: [...PIZZA_INGREDIENTS],
+    Steps: ["Flatten the crust", "Spread on the sauce and cheese", "Bake at 350 for 15 minutes", "Burn the roof of your mouth because you didn't let it cool down in time"],
+    Tags: ["Pizza","Italian", "Pie", "Cheese Pizza", "Cheese"],
+    RecipeUrl: "cheese-pizza",
+    PhotoUrl: "https://images.unsplash.com/photo-1620374645498-af6bd681a0bd"
 }
