@@ -7,6 +7,8 @@ import { RecipeService } from '../recipe.service';
 import { of, throwError } from 'rxjs';
 import { RECIPES } from '../recipe.stub';
 import { ActivatedRoute } from '@angular/router';
+import { DebugElement } from '@angular/core';
+import { By } from '@angular/platform-browser';
 
 describe('ViewRecipeComponent', () => {
   let component: ViewRecipeComponent;
@@ -139,6 +141,7 @@ describe('ViewRecipeComponent', () => {
   })
 
   describe("DOM", () => {
+    let d: DebugElement;
     beforeEach(async () => {
       await TestBed.configureTestingModule({
         declarations: [ ViewRecipeComponent ],
@@ -149,12 +152,36 @@ describe('ViewRecipeComponent', () => {
   
       fixture = TestBed.createComponent(ViewRecipeComponent);
       component = fixture.componentInstance;
+      component.recipe = {...RECIPES[0]}
       fixture.detectChanges();
+      d = fixture.debugElement;
     });
   
     it('should create', () => {
       expect(component).toBeTruthy();
     });
+
+    it("should display an image with the correct url, alt and title", () => {
+      //arrange
+      const imgEl: HTMLImageElement = d.query(By.css("#recipe-splash")).nativeElement;
+
+      //assert
+      expect(imgEl.src).toBe(component.recipe.PhotoUrl);
+      expect(imgEl.alt).toBe(component.recipe.Title);
+      expect(imgEl.title).toBe(component.recipe.Title);
+    });
+
+    it("should not display the photo if the PhotoUrl is blank", () => {
+      //arrange
+      component.recipe.PhotoUrl = "";
+      fixture.detectChanges();
+      d = fixture.debugElement;
+
+      const imgEl: DebugElement = d.query(By.css("#recipe-splash"));
+
+      //assert
+      expect(imgEl).toBeNull();
+    })
   })
 
 });

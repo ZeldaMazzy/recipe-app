@@ -9,7 +9,7 @@ export interface Recipe {
     Steps: string[];
     Tags: string[];
     RecipeUrl: string;
-    PhotoUrl?: string | null;
+    PhotoUrl: string;
 }
 
 export interface CreateRecipe {
@@ -20,5 +20,5 @@ export interface CreateRecipe {
     Steps: string[];
     Tags: string[];
     RecipeUrl: string;
-    PhotoUrl?: string | null;
+    PhotoUrl: string;
 }

@@ -25,8 +25,12 @@ export class RecipeListComponent implements OnInit, OnDestroy {
   }
 
   private getRecipes(): void {
+    this.doneLoading = false;
     this.recipeService.getRecipes()
-      .pipe(takeUntil(this.destroy$))
+      .pipe(
+        takeUntil(this.destroy$),
+        finalize(() => this.doneLoading = true)
+        )
       .subscribe({
         next: recipes => this.recipes = recipes.slice(),
         error: (err: Error) => {
@@ -41,8 +45,12 @@ export class RecipeListComponent implements OnInit, OnDestroy {
 
     if(!confirmDelete) return;
 
+    this.doneLoading = false;
     this.recipeService.deleteRecipe(1)
-      .pipe(takeUntil(this.destroy$))
+      .pipe(
+        takeUntil(this.destroy$),
+        finalize(() => this.doneLoading = true)
+      )
       .subscribe({
         error: (err: Error) => {
           console.error("There was an error deleting the recipe: ", err);

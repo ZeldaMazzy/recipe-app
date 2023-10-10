@@ -1,6 +1,6 @@
     <div class="row col-lg-6 col-md-9 col-sm-12 mx-auto">
-        <div style="width: 100%;display: flex">
-            <img class="img-header" [src]="recipe.PhotoUrl" [alt]="recipe.Title">
+        <div style="width: 100%;display: flex" *ngIf="recipe.PhotoUrl.length">
+            <img id="recipe-splash" class="img-header" [src]="recipe.PhotoUrl" [alt]="recipe.Title" [title]="recipe.Title">
         </div>
         <h4 class="recipe-header">{{recipe.Title}}</h4>
         <h5>{{recipe.Description}}</h5>
