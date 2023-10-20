@@ -145,6 +145,13 @@ export const DEFAULT_RECIPE: Recipe = {
     PhotoUrl: ""
 }
 
+export const DEFAULT_INGREDIENT: Ingredient = {
+    IngredientId: -1,
+    Name: "",
+    Quantity: 0,
+    Unit: ""
+}
+
 export const CREATE_RECIPE: CreateRecipe = {
     Title: "Pizza",
     Description: "A tasty cheese pizza",
