@@ -85,7 +85,7 @@ export const PIZZA_INGREDIENTS: Ingredient[] = [
 
 export const RECIPES: Recipe[] = [
     {
-        RecipeId: 1,
+        RecipeId: "chana-masala-01",
         Title: "Chana Masala",
         Description: "The greatest Indian dish in the Universe",
         Intro: "This is an intro. I will keep it as short as possible, but you know how these things go.",
@@ -96,11 +96,10 @@ export const RECIPES: Recipe[] = [
             "Voila"
         ],
         Tags: ["Vegan", "Indian", "Spicy", "Chickpea"],
-        RecipeUrl: "chana-masala",
         PhotoUrl: "https://images.unsplash.com/photo-1587033649773-5c231faa21e3"
     },
     {
-        RecipeId: 2,
+        RecipeId: "cereal-02",
         Title: "Cereal",
         Description: "The breakfast of champs",
         Intro: "This is an intro. I will keep it as short as possible, but you know how these things go.",
@@ -112,11 +111,10 @@ export const RECIPES: Recipe[] = [
             "Do you really need steps for this?"
         ],
         Tags: ["Cereal", "Oat", "Breakfast"],
-        RecipeUrl: "cereal",
         PhotoUrl: "https://images.unsplash.com/photo-1504308805006-0f7a5f1f0f71"
     },
     {
-        RecipeId: 3,
+        RecipeId: "fruit-smoothie-03",
         Title: "Fruit Smoothie",
         Description: "See you in hell, fruit",
         Intro: "This is an intro. I will keep it as short as possible, but you know how these things go.",
@@ -128,20 +126,18 @@ export const RECIPES: Recipe[] = [
             "Blend"
         ],
         Tags: ["Smoothie", "Healthy", "Fruit", "Blender"],
-        RecipeUrl: "fruit-smoothie",
         PhotoUrl: "https://images.unsplash.com/photo-1525385133512-2f3bdd039054"
     },
 ];
 
 export const DEFAULT_RECIPE: Recipe = {
-    RecipeId: -1,
+    RecipeId: "",
     Title: "",
     Description: "",
     Intro: "",
     Ingredients: [],
     Steps: [],
     Tags: [],
-    RecipeUrl: "",
     PhotoUrl: ""
 }
 
