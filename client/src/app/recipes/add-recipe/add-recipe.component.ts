@@ -4,6 +4,8 @@ import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@ang
 import { Recipe } from 'src/app/shared/models/recipe';
 import { DEFAULT_RECIPE } from '../recipe.stub';
 import { Ingredient } from 'src/app/shared/models/ingredient';
+import { RecipeService } from '../recipe.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-add-recipe',
@@ -12,14 +14,26 @@ import { Ingredient } from 'src/app/shared/models/ingredient';
 })
 export class AddRecipeComponent implements OnInit {
 
-  public recipeForm: FormGroup = new FormGroup({});
   @Input("recipe")
   public recipe: Recipe = {...DEFAULT_RECIPE}
+  public recipeForm: FormGroup = new FormGroup({});
 
-  constructor(private fb: FormBuilder) {}
+  constructor(  private recipeService: RecipeService, 
+                private route: ActivatedRoute,
+                private fb: FormBuilder) {}
 
   ngOnInit(): void {
-    this.buildForm();
+    if(!this.route.snapshot.params["recipe-id"]) {
+      this.buildForm();
+      return;
+    }
+
+    const recipeId: string = this.route.snapshot.params["recipe-id"];
+    this.recipeService
+  }
+
+  public submitForm(): void {
+
   }
 
   private buildForm(): void {
