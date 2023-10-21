@@ -13,30 +13,34 @@ export class RecipeService {
   constructor(private http: HttpClient){}
 
   public getRecipes(): Observable<Recipe[]> { 
-    return this.http.get<Recipe[]>(this.url + "/posts")
-    .pipe(map(() => RECIPES))
+    return of(RECIPES.slice())
+    // this.http.get<Recipe[]>(this.url + "/posts")
+    // .pipe(map(() => RECIPES))
   }
 
-  public getRecipeByUrl(url: string): Observable<Recipe | null> {
-    const recipe: Recipe | undefined = RECIPES.find(r => r.RecipeUrl === url);
-    if(!recipe) return of(null)
-    return this.http.get<Recipe[]>(this.url + "/posts/" + recipe.RecipeId)
-    .pipe(map(() => recipe))
+  public getRecipeByUrl(url: string): Observable<Recipe> {
+    const recipe: Recipe | undefined = RECIPES.find(r => r.RecipeId === url);
+    if(!recipe) throw new Error("We couldn't find the selected recipe.")
+    return of(recipe);
+    // this.http.get<Recipe[]>(this.url + "/posts/" + recipe.RecipeId)
+    // .pipe(map(() => recipe))
   }
 
   public createRecipe(newRecipe: CreateRecipe): Observable<Recipe> {
-    return this.http.post<Recipe>(this.url + "/posts", newRecipe)
-    .pipe(map(() => {return {RecipeId: 4, ...newRecipe}}))
+    return of({RecipeId: "recipe-4", ...newRecipe})
+    // this.http.post<Recipe>(this.url + "/posts", newRecipe)
+    // .pipe(map(() => {return {RecipeId: "4", ...newRecipe}}))
   }
 
   public editRecipe(recipe: Recipe): Observable<Recipe> {
-    const id: number = recipe.RecipeId;
-    return this.http.patch<Recipe>(this.url + "/posts/" + id, recipe)
-    .pipe(map(() => recipe))
+    return of(recipe)
+    // this.http.patch<Recipe>(this.url + "/posts/" + 1, recipe)
+    // .pipe(map(() => recipe))
   }
 
   public deleteRecipe(recipeId: number): Observable<boolean> {
-    return this.http.delete<any>(this.url + "/posts/" + recipeId)
-    .pipe(map(res => !!res))
+    return of(true)
+    // this.http.delete<any>(this.url + "/posts/" + recipeId)
+    // .pipe(map(res => !!res))
   }
 }
