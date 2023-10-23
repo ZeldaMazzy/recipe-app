@@ -4,7 +4,7 @@
     <!-- Displays if finished loading -->
     <div *ngIf="doneLoading">
         <div class="card mb-3 mx-auto" style="width: 28rem;" *ngFor="let recipe of recipes">
-            <img [routerLink]="recipe.RecipeId" [src]="recipe.PhotoUrl" class="card-img-top img-max-height" [alt]="recipe.Title">
+            <img [routerLink]="recipe.RecipeId + '/details'" [src]="recipe.PhotoUrl" class="card-img-top img-max-height" [alt]="recipe.Title">
             <div class="card-body">
               <h4 class="card-title">{{recipe.Title}}</h4>
               <p class="card-text">{{recipe.Description}}</p>

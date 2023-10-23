@@ -3,6 +3,50 @@
 <!-- ADD / EDIT RECIPE -->
 <div class="row">
     <div class="col-md-6 col-sm-12 mx-auto">
+        <form action="" class="" [formGroup]="recipeForm">
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input type="text" id="title" 
+                    name="title" 
+                    class="form-control"
+                    formControlName="Title">
+            </div>
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea id="description" 
+                    name="description" 
+                    class="form-control"
+                    formControlName="Description"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="intro">Intro</label>
+                <textarea id="intro" 
+                    name="intro" 
+                    class="form-control"
+                    formControlName="Intro"></textarea>
+            </div>
+            <label for="ingredients">Ingredients</label>
+            <ng-container class="form-group" formArrayName="Ingredients">
+                <ng-container *ngFor="let ingredient of ingredients.controls; let i = index" class="d-flex my-3">
+                    <div [formGroupName]="ingredient.value">
+                        <input class="form-control me-2" placeholder="ingredient name" type="text" name="" id="" formControlName="ingredient.Name">
+                        <input class="form-control me-2" placeholder="amount" type="number" name="" id="">
+                        <input class="form-control" placeholder="unit" type="text" name="" id="">
+                    </div>
+                </ng-container>
+                <button (click)="addIngredient()">add new</button>
+            </ng-container>
 
+            <div>
+            </div>
+        </form>
+        <button class="btn btn-primary mx-3" 
+            type="button"
+            (click)="createNewRecipe()"
+        >Add</button>
+        <button class="btn btn-primary mx-3" 
+            type="button"
+            (click)="editRecipe()"
+        >Edit</button>
     </div>
 </div>

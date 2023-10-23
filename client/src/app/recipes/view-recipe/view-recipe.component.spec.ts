@@ -24,7 +24,7 @@ describe('ViewRecipeComponent', () => {
 
   describe("Isolated Tests", () => {
     beforeEach(() => {
-      // component = new ViewRecipeComponent(new ActivatedRoute(), service);
+      component = new ViewRecipeComponent(new ActivatedRoute(), service);
     })
 
     it("should create", () => {
@@ -49,10 +49,10 @@ describe('ViewRecipeComponent', () => {
       fixture = TestBed.createComponent(ViewRecipeComponent);
       component = fixture.componentInstance;
       spyOn<any>(component, "getRecipeByUrl");
-      // component.ngOnInit();
+      component.ngOnInit();
 
       //assert
-      // expect(component["getRecipeByUrl"]).toHaveBeenCalledWith(recipeUrl)
+      expect(component["getRecipeByUrl"]).toHaveBeenCalledWith(recipeUrl)
     })
 
     it("should get a single recipe when getRecipeByUrl() is called", () => {
@@ -60,7 +60,7 @@ describe('ViewRecipeComponent', () => {
       component.recipe = {...DEFAULT_RECIPE};
 
       //act
-      // component["getRecipeByUrl"]("url");
+      component["getRecipeByUrl"]("url");
 
       //assert
       expect(component.recipe).toEqual(RECIPES[0]);
@@ -76,7 +76,7 @@ describe('ViewRecipeComponent', () => {
       component.recipe = {...DEFAULT_RECIPE};
 
       //act
-      // component["getRecipeByUrl"]("url");
+      component["getRecipeByUrl"]("url");
 
       //assert
       expect(component.recipe).toEqual(DEFAULT_RECIPE);
