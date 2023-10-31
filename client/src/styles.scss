@@ -1,1 +1,64 @@
 /* You can add global styles to this file, and also import other style files */
+
+h1, h2, h3, h4 {
+    font-family: 'Unna', serif;
+    color: indigo !important;
+}
+
+.numerical-sub-label {
+    font-size: small;
+    color:darkslategrey;
+}
+
+.reactive-stacked {
+    margin-bottom: 1em;
+    display: inline-flex;
+}
+
+.flex-width-16 {
+    width: 16% !important;
+}
+.flex-width-25 {
+    width: 25% !important;
+}
+.flex-width-33 {
+    width: 33% !important;
+}
+.flex-width-50 {
+    width: 50% !important;
+}
+
+form > div {
+    margin-bottom: 1em;
+}
+
+@media (max-width: 576px) {
+    form > div {
+        margin-bottom: 2em;
+    }
+    
+    // label {
+    //     font-size: large;
+    //     margin-bottom: 0.5em;
+    // }
+    .reactive-stacked {
+        margin-bottom: 1.5em;
+        display: block;
+    }
+    .flex-width-16 {
+        margin-bottom: 0.5em;
+        width: 100% !important;
+    }
+    .flex-width-25 {
+        margin-bottom: 0.5em;
+        width: 100% !important;
+    }
+    .flex-width-33 {
+        margin-bottom: 0.5em;
+        width: 100% !important;
+    }
+    .flex-width-50 {
+        margin-bottom: 0.5em;
+        width: 100% !important;
+    }
+}

@@ -1,42 +1,65 @@
-<h4>Add a new Recipe</h4>
+<h3 style="text-align:center">Add a new Recipe</h3>
 
 <!-- ADD / EDIT RECIPE -->
 <div class="row">
     <div class="col-md-6 col-sm-12 mx-auto">
         <form action="" class="" [formGroup]="recipeForm">
-            <div class="form-group">
-                <label for="title">Title</label>
+            <div class="form-floating">
                 <input type="text" id="title" 
                     name="title" 
                     class="form-control"
                     formControlName="Title">
+                <label for="title">Title</label>
             </div>
-            <div class="form-group">
-                <label for="description">Description</label>
+            <div class="form-floating">
                 <textarea id="description" 
                     name="description" 
                     class="form-control"
                     formControlName="Description"></textarea>
+                <label for="description">Description</label>
             </div>
-            <div class="form-group">
-                <label for="intro">Intro</label>
+            <div class="form-floating">
                 <textarea id="intro" 
                     name="intro" 
                     class="form-control"
                     formControlName="Intro"></textarea>
+                <label for="intro">Intro</label>
+                <span class="numerical-sub-label"
+                    [ngStyle]="{'color': FormHelper.getWarningColor(introLength, 100)}"
+                    >{{introLength}} / 100</span>
             </div>
-            <label for="ingredients">Ingredients</label>
-            <ng-container class="form-group" formArrayName="Ingredients">
-                <ng-container *ngFor="let ingredient of ingredients.controls; let i = index" class="d-flex my-3">
-                    <div [formGroupName]="ingredient.value">
-                        <input class="form-control me-2" placeholder="ingredient name" type="text" name="" id="" formControlName="ingredient.Name">
-                        <input class="form-control me-2" placeholder="amount" type="number" name="" id="">
-                        <input class="form-control" placeholder="unit" type="text" name="" id="">
+            <label for="ingredients-form">Ingredients</label>
+            <div formArrayName="Ingredients">
+                <div *ngFor="let ingredient of ingredients.controls; let ingIndex = index">
+                    <div [formGroupName]="ingIndex" class="reactive-stacked">
+                        <div class="form-floating flex-width-50">
+                            <input type="text"
+                                [id]="'ingredient-name-' + ingIndex"
+                                [name]="'ingredient-name-' + ingIndex"
+                                class="form-control"
+                                formControlName="Name">
+                            <label [for]="'ingredient-name-' + ingIndex">Name</label>
+                        </div>
+                        <div class="form-floating flex-width-25">
+                            <input type="number"
+                                [id]="'ingredient-number-' + ingIndex"
+                                [name]="'ingredient-number-' + ingIndex"
+                                class="form-control"
+                                formControlName="Quantity">
+                            <label [for]="'ingredient-number-' + ingIndex">Quantity</label>
+                        </div>
+                        <div class="form-floating flex-width-25">
+                            <input type="text"
+                                [id]="'ingredient-unit-' + ingIndex"
+                                [name]="'ingredient-unit-' + ingIndex"
+                                class="form-control"
+                                formControlName="Unit">
+                            <label [for]="'ingredient-unit-' + ingIndex">Unit</label>
+                        </div>
                     </div>
-                </ng-container>
-                <button (click)="addIngredient()">add new</button>
-            </ng-container>
-
+                </div>
+                <button class="btn btn-block btn-outline-primary">+</button>
+            </div>
             <div>
             </div>
         </form>

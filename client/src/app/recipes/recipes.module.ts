@@ -6,6 +6,7 @@ import { ViewRecipeComponent } from './view-recipe/view-recipe.component';
 import { RecipeListComponent } from './recipe-list/recipe-list.component';
 import { AddRecipeComponent } from './add-recipe/add-recipe.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({

@@ -7,6 +7,7 @@ import { Ingredient } from 'src/app/shared/models/ingredient';
 import { RecipeService } from '../recipe.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subject, finalize, first, takeUntil } from 'rxjs';
+import { FormHelper } from 'src/app/shared/helper-classes/form-helper';
 
 @Component({
   selector: 'app-add-recipe',
@@ -52,7 +53,9 @@ export class AddRecipeComponent implements OnInit, OnDestroy {
     this.recipeService.createRecipe(this.recipeForm.value)
       .pipe(takeUntil(this.destroy$), first())
       .subscribe({
-        next: r => this.router.navigate([r.RecipeId, 'details']),
+        next: r => {
+          this.router.navigate([r.RecipeId, 'details'])
+        },
         error: err => {
           console.error("There was an error: ", err);
           this.componentState = State.CREATE;
@@ -74,7 +77,9 @@ export class AddRecipeComponent implements OnInit, OnDestroy {
     this.recipeService.editRecipe(request)
       .pipe(takeUntil(this.destroy$), first())
       .subscribe({
-        next: () => this.router.navigate([this.recipe.RecipeId, 'details']),
+        next: () => {
+          this.router.navigate([this.recipe.RecipeId, 'details'])
+        },
         error: err => {
           console.error("There was an error: ", err);
           this.componentState = State.EDIT;
@@ -103,8 +108,8 @@ export class AddRecipeComponent implements OnInit, OnDestroy {
     const r: Recipe = this.recipe;
     this.recipeForm = this.fb.group({
       Title: [r.Title, this.getValidators(3, 50)],
-      Description: [r.Description, this.getValidators(3, 500)],
-      Intro: [r.Intro, this.getValidators(0, 2000)],
+      Description: [r.Description, this.getValidators(3, 250)],
+      Intro: [r.Intro, this.getValidators(0, 1000)],
       Ingredients: this.fb.array([]),
       Steps: this.fb.array([]),
       Tags: this.fb.array([])
@@ -131,26 +136,28 @@ export class AddRecipeComponent implements OnInit, OnDestroy {
       Quantity: [ing.Quantity, Validators.required],
       Unit: [ing.Unit, this.getValidators(1, 25)],
     });
-    this.ingredients.push(ingForm)
+    (this.recipeForm.get("Ingredients") as FormArray).push(ingForm)
   }
 
   public addStep(step: string = ""): void {
     const stepControl: FormControl = this.fb.control({
       Step: [step, this.getValidators(1, 1000)]
     });
-    this.steps.push(stepControl)
+    (this.recipeForm.get("Steps") as FormArray).push(stepControl)
   }
 
   public addTag(tag: string = ""): void {
     const tagControl: FormControl = this.fb.control({
       Tag: [tag, this.getValidators(1, 50)]
     });
-    this.tags.push(tagControl)
+    (this.recipeForm.get("Tags") as FormArray).push(tagControl)
   }
 
+  public get introLength() { return this.recipeForm.get("Intro")?.value.length }
   public get ingredients() { return this.recipeForm.controls["Ingredients"] as FormArray }
   public get steps() { return this.recipeForm.get("Steps") as FormArray }
   public get tags() { return this.recipeForm.get("Tags") as FormArray }
+  public get FormHelper() {return FormHelper}
 
   private getValidators(min: number, max: number): Validators[] {
     return [
