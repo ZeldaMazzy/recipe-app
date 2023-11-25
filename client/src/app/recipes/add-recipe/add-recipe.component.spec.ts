@@ -5,11 +5,12 @@ import { AddRecipeComponent } from './add-recipe.component';
 import { RecipeService } from '../recipe.service';
 import { RECIPES } from '../recipe.stub';
 import { of } from 'rxjs';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 describe('AddRecipeComponent', () => {
   let component: AddRecipeComponent;
   let service: RecipeService;
+  let routerMock: Router;
 
   beforeEach(() => {
     service = jasmine.createSpyObj("RecipeService", {
@@ -17,11 +18,15 @@ describe('AddRecipeComponent', () => {
       editRecipe: of(RECIPES[0]),
       createRecipe: of(RECIPES[0])
     });
+
+    routerMock = jasmine.createSpyObj("Router", {
+      navigate: undefined
+    })
   })
 
   describe("Isolated Tests", () => {
     beforeEach(() => {
-      component = new AddRecipeComponent(service, new ActivatedRoute(), new FormBuilder());
+      component = new AddRecipeComponent(service, new ActivatedRoute(), routerMock, new FormBuilder());
     })
 
     it("should create the component", () => {

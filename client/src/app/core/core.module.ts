@@ -1,10 +1,14 @@
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { AuthenticationComponent } from './authentication/authentication/authentication.component';
+import { UserComponent } from './user/user.component';
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    AuthenticationComponent
+  ],
   imports: [
     CommonModule
   ]
